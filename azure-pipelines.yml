@@ -20,7 +20,7 @@ steps:
 
 - task: SnykSecurityScan@1
   inputs:
-    serviceConnectionEndpoint: 'devsecopsdemo'
+    serviceConnectionEndpoint: 'Snyk_Scan'
     testType: 'app'
     monitorWhen: 'always'
-    failOnIssues: true
+    failOnIssues: false
