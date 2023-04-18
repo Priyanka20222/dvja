@@ -31,3 +31,6 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'sonarcloud-trial'
     projectName: 'SonarCloud_trial'
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '60'
