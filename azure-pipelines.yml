@@ -4,23 +4,28 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  - master  # Indentation level increased by two spaces
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-latest  # Consistent indentation level
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'  # Consistent indentation level
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-- task: SnykSecurityScan@1
-  inputs:
-    serviceConnectionEndpoint: 'Snyk_scan'
-    testType: 'app'
-    monitorWhen: 'always'
-    failOnIssues: false
+  - task: Bash@3
+    displayName: "Snyk_SCA_Scanning"
+    inputs:
+      targetType: 'inline'
+      script: |
+        echo "----------Download Latest Snyk CLI-----------"
+        curl -Lo ./snyk "https://github.com/snyk/snyk/releases/download/v1.1159.0/snyk-linux"
+        chmod +x snyk
+        ls -lrt
+        echo "----------Authenticating Snyk-----------"
+        ./snyk auth $(snyk-token)
+        echo "----------Snyk Monitor-----------"
+        ./snyk monitor --all-projects
+        echo "----------Snyk Scanning-----------"
+        ./snyk test --all-projects
+         failOnStderr: true
