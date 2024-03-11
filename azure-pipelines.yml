@@ -4,14 +4,14 @@
 # https://aka.ms/yaml
 
 trigger:
-  - master  # Indentation level increased by two spaces
+  - master  
 
 pool:
-  vmImage: ubuntu-latest  # Consistent indentation level
+  vmImage: ubuntu-latest  
 
 steps:
   - script: echo Hello, world!
-    displayName: 'Run a one-line script'  # Consistent indentation level
+    displayName: 'Run a one-line script'  
 
   - task: Bash@3
     displayName: "Snyk_SCA_Scanning"
