@@ -23,7 +23,7 @@ steps:
         chmod +x snyk
         ls -lrt
         echo "----------Authenticating Snyk-----------"
-        ./snyk auth $(SNYK-TOKEN)
+        ./snyk auth $(snyk_token)
         echo "----------Snyk Monitor-----------"
         ./snyk monitor --all-projects
         echo "----------Snyk Scanning-----------"
