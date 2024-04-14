@@ -4,23 +4,33 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  - master  # Indented with two spaces
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-latest  # Indented with two spaces
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'  # Indented with two spaces
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'  # Indented with two spaces
 
-- task: SnykSecurityScan@1
-  inputs:
-    serviceConnectionEndpoint: 'Snyk_scan'
-    testType: 'app'
-    monitorWhen: 'always'
-    failOnIssues: false
+  - task: Bash@3  # Indented with two spaces (task definition)
+    displayName: "Snyk_SCA_Scanning"  # Indented with two spaces
+    inputs:
+      targetType: 'inline'  # Indented with two spaces
+      script: |  # Indented with two spaces (start of multi-line script)
+        echo "----------Download Latest Snyk CLI-----------"
+        curl -Lo ./snyk "https://github.com/snyk/snyk/releases/download/v1.1159.0/snyk-linux"
+        chmod +x snyk
+        ls -lrt
+        echo "----------Authenticating Snyk-----------"
+        ./snyk auth $(snyk-token)
+        echo "----------Snyk Monitor-----------"
+        ./snyk monitor --all-projects
+        echo "----------Snyk Scanning-----------"
+        ./snyk test --all-projects
+      failOnStderr: true  # Indented with two spaces
