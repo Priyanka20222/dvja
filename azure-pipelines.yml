@@ -11,5 +11,12 @@ pool:
 
 steps:
   - script: echo Hello, world!
-    displayName: 'Run a one-line script'  
+    displayName: 'Run a one-line script'
 
+  - task: SnykSecurityScan@1
+    inputs:
+      serviceConnectionEndpoint: 'Snyk_Scan'
+      testType: 'app'
+      monitorWhen: 'always'
+      failOnIssues: false
+      organization: 'f65ad61c-06f2-4536-8f24-6053572ff733'
