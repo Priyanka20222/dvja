@@ -1,4 +1,6 @@
 # Damn Vulnerable Java Application
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FPriyanka20222%2Fdvja.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FPriyanka20222%2Fdvja?ref=badge_shield)
+
 
 ## Quick Start
 
@@ -61,3 +63,7 @@ This will start the `Jetty` server on port 8080.
 * Copy targets/dvja.war to Tomcat webapps directory
 * To serve as root application, copy as `ROOT.war` to Tomcat webapps directory.
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FPriyanka20222%2Fdvja.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FPriyanka20222%2Fdvja?ref=badge_large)
